@@ -4,8 +4,9 @@ import { useNavigation } from "@react-navigation/core"
 import { StyleSheet, Text, View } from 'react-native';
 
 import Button from "../../components/Button"
+import Background from '../../components/Background';
 
-export default function Pagina2() {
+export default function Respondidos() {
 
   const { navigate, goBack } = useNavigation()
 
@@ -14,22 +15,23 @@ export default function Pagina2() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>AgroQuiz</Text>
-      <Text style={styles.text}>Pagina2</Text>
+    <Background>
+      <View style={styles.container}>
+        <Text style={styles.text}>AgroQuiz</Text>
+        <Text style={styles.text}>Respondidos</Text>
 
 
-      <View style={styles.btn}>
-        <Button title="goBack" onPress={togglePage} />
+        <View style={styles.btn}>
+          <Button title="goBack" onPress={togglePage} />
+        </View>
       </View>
-    </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

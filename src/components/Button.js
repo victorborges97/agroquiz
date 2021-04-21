@@ -1,35 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { RectButton } from "react-native-gesture-handler"
 
 import colors from "../styles/colors"
 import fonts from '../styles/fonts';
+import styled from 'styled-components';
 
-export default function Button({ title, ...rest }) {
+export default function Button({ title, height, marginRight, marginLeft, ...rest }) {
+
+  const ContainerButton = styled(RectButton)`
+    background-color: ${colors.bg_button_send};
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: ${marginRight ? marginRight : "0px"};
+    margin-left: ${marginLeft ? marginLeft : "0px"};
+    height: ${height ? height : "56px"};
+  `
+
+  const TextButton = styled.Text`
+    color: ${colors.text_send};
+    font-size: 16px;
+    padding: 8px 16px;
+  `
+
   return (
-    <TouchableOpacity
-        activeOpacity={0.8}
-        style={styles.botao}
-        {...rest}
-    >
-        <Text
-            style={styles.text_botao}
-        >
+    <ContainerButton {...rest}>
+        <TextButton>
             { title }
-        </Text>
-    </TouchableOpacity>
+        </TextButton>
+    </ContainerButton>
   );
 }
-
-const styles = StyleSheet.create({
-  botao: {
-      backgroundColor: colors.green,
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: 16,
-      height: 56,
-  },
-  text_botao: {
-      color: colors.white,
-      fontSize: 16,
-  },
-});

@@ -1,16 +1,24 @@
 export default {
-  green: '#32B768',
-  green_dark: '#2B7A4B',
-  green_light: '#DAF2E4',
-
-  heading: '#52665A',
-  body_dark: '#738078',
-  body_light: '#AAB2AD',
-
-  background: '#FFFFFF',
-  shape: '#F0F0F0',
+  background: '#F5F5F5',
   white: '#FFFFFF',
-  gray: '#CFCFCF',
+  
+  bg_botton_bar: "#704282",
+  bg_button_trash: "#E0E0E0",
+  bg_button_send: "#6fcf97",
+  bg_switch_false: "#bdbdbd",
+  bg_switch_true: "#540073",
+
+  text_bold_agro: "#540073",
+  text_regular: "#5D4F62",
+  text_send: "#FFFFFF",
+  text_trash: "#5D4F62",
+  text_placeholder: "#828282",
+
+  color_line: "#474747",
+
+  border_input: "#5D4F62",
+
+  aviso_red: "#eb5757",
 
   blue: '#3D7199',
   blue_light: '#EBF6FF',

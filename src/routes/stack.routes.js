@@ -3,8 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack"
 
 import colors from "../styles/colors";
 
-import HomePage from "../page/Home/index";
-import Pagina2 from "../page/Pagina2";
+import Tabs from "./tab.routes";
+import SeeQuestionsAnswered from "../page/SeeQuestionsAnswered";
+import AnsweringQuestions from "../page/AnsweringQuestions";
 
 const stackRoutes = createStackNavigator();
 
@@ -16,15 +17,21 @@ const AppRoutes = () => (
                 backgroundColor: colors.white
             }
         }}
+
     >
         <stackRoutes.Screen 
-            name="HomePage"
-            component={HomePage}
+            name="Home"
+            component={Tabs}
         />
 
         <stackRoutes.Screen 
-            name="Pagina2"
-            component={Pagina2}
+            name="ResponderQuestionario"
+            component={AnsweringQuestions}
+        />
+
+        <stackRoutes.Screen 
+            name="VisualizarQuestionario"
+            component={SeeQuestionsAnswered}
         />
 
     </stackRoutes.Navigator>
