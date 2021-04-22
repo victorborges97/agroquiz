@@ -1,11 +1,14 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import UserProvider from "../context";
 
 import StackRoutes from "./stack.routes";
 
 const Routes = () => (
     <NavigationContainer>
-        <StackRoutes />
+        <UserProvider>
+            <StackRoutes />
+        </UserProvider>
     </NavigationContainer>
 )
 

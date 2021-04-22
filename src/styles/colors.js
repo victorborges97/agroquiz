@@ -7,6 +7,7 @@ export default {
   bg_button_send: "#6fcf97",
   bg_switch_false: "#bdbdbd",
   bg_switch_true: "#540073",
+  bg_switch: "#E0E0E0",
 
   text_bold_agro: "#540073",
   text_regular: "#5D4F62",

@@ -1,11 +1,10 @@
-import React from "react";
-import { Dimensions } from "react-native"
+import React, { useState } from "react";
+import { Dimensions, Switch } from "react-native"
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from "react-native-gesture-handler"
 
 import styled from "styled-components";
 import colors from "../styles/colors";
-import Button from "./Button";
 
 const Card = styled.View`
     width: 100%;
@@ -15,7 +14,7 @@ const Card = styled.View`
     margin-top: 15px;
     border-radius: 10px;
 `
-const CardHeader = styled.View`
+const CardHeader = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -29,15 +28,8 @@ const CardHeaderText = styled.Text`
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    max-width: ${Dimensions.get('window').width * 0.7};
+    max-width: ${Dimensions.get('window').width * 0.7}px;
     color: ${colors.text_bold_agro};
-`
-const CardHeaderIcon = styled(RectButton)`
-    margin-left: 5px;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
 `
 
 const CardLine = styled.View`
@@ -59,65 +51,70 @@ const CardFooter = styled.View`
     padding-left: 23px;
     padding-right: 23px;
 `
+const CardFooterSwitch = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`
 const CardFooterText = styled.Text`
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     color: ${colors.text_regular};
 `
-const CardFooterButtons = styled.View`
-    flex-direction: row;
+const CardFooterIcon = styled(RectButton)`
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
 `
 
-export default function CardQuestion({ 
+export default function SeeQuestion({ 
     question,
     onPressClear,
-    onPressTrue,
+    onPressSwitch,
     onPressEdit,
-    iconHeader,
     fontText,
 }) { 
+    const [isEnabled, setIsEnabled] = useState(question.isRequired);
+    const toggleSwitch = () => {
+        setIsEnabled(previousState => !previousState);
+        onPressSwitch(!isEnabled);
+    }
     return(
       <Card>
 
-        <CardHeader>
+        <CardHeader onPress={onPressEdit} >
         
             <CardHeaderText>
-                { question.title }
+                { question.question }
             </CardHeaderText>
-
-            {
-                iconHeader &&
-                (
-                    <CardHeaderIcon onPress={onPressEdit}>
-                        <Feather name="edit" size={15} color={colors.text_bold_agro} />
-                    </CardHeaderIcon>
-                )
-            }
 
         </CardHeader>
 
         <CardLine />
         
         <CardFooter>
-            <CardFooterText>
-                { question.questions.length } Questões
-            </CardFooterText>
-            <CardFooterButtons>
-                <Button 
-                    title="Excluir"
-                    onPress={onPressClear}
-                    height="24px"
-                    marginRight="10px"
-                    fontText={fontText}
-                    themeCancel
+
+            <CardFooterSwitch>
+                <Switch
+                    trackColor={{ false: colors.bg_switch, true: colors.bg_switch }}
+                    thumbColor={isEnabled ? colors.bg_switch_true : colors.bg_switch_false}
+                    ios_backgroundColor={colors.bg_switch}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
                 />
-                <Button 
-                    title="RESPONDER"
-                    onPress={onPressTrue}
-                    height="24px"
-                    fontText={fontText}
-                />
-            </CardFooterButtons>
+                <CardFooterText>
+                    Obrigatória
+                </CardFooterText>
+            </CardFooterSwitch>
+
+            <CardFooterIcon onPress={onPressClear}>
+                <Feather name="trash-2" size={20} color={colors.text_regular} />
+            </CardFooterIcon>
+
         </CardFooter>
         
       </Card>

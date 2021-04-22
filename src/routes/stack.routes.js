@@ -7,6 +7,7 @@ import Tabs from "./tab.routes";
 import SeeQuestionsAnswered from "../page/SeeQuestionsAnswered";
 import AnsweringQuestions from "../page/AnsweringQuestions";
 import EditingQuestion from "../page/EditingQuestion";
+import Login from "../page/Login";
 
 const stackRoutes = createStackNavigator();
 
@@ -18,7 +19,7 @@ const AppRoutes = () => (
                 backgroundColor: colors.white
             }
         }}
-
+        initialRouteName="Login"
     >
         <stackRoutes.Screen 
             name="Home"
@@ -38,6 +39,11 @@ const AppRoutes = () => (
         <stackRoutes.Screen 
             name="EditingQuestion"
             component={EditingQuestion}
+        />
+
+        <stackRoutes.Screen 
+            name="Login"
+            component={Login}
         />
 
     </stackRoutes.Navigator>

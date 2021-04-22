@@ -14,6 +14,13 @@ export default function AddingQuestions(props) {
     goBack()
   }
 
+  // const handlePost = () => {
+  //   const res = await apiaxios.post("users/auth", {
+  //     usuario: usuario,
+  //     password: password,
+  //   });
+  // }
+
   return (
     <Background>
       <View style={styles.container}>

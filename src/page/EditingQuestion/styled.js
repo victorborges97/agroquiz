@@ -1,4 +1,3 @@
-import { color } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import colors from "../../styles/colors"
 
@@ -40,12 +39,39 @@ export const InputTituloTextInput = styled.TextInput`
     color: ${colors.text_regular};
 `;
 
-// export const Container = styled.View`
-//   flex: 1;
-//   align-items: center;
-// `;
+export const ButtonGoBack = styled.View`
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+`;
 
-// export const Container = styled.View`
-//   flex: 1;
-//   align-items: center;
-// `;
+export const CardList = styled.View`
+  width: 100%;
+  align-items: center;
+`;
+
+export const CardLine = styled.View`
+  border-bottom-color: ${colors.color_line};
+  border-bottom-width: 1px;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+`
+
+export const ButtonAdd = styled.View`
+  width: 25px;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  border-radius: 12.5px;
+  border-width: 1px;
+  border-color: ${colors.color_line};
+  background: ${colors.background};
+  position: absolute;
+  left: 47%;
+  top: -12.5px;
+  z-index: 2;
+`

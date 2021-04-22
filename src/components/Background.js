@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components";
 import colors from "../styles/colors";
 
-export default function Background({ children, stack, ...rest }) { 
+export default function Background({ children, stack, center, ...rest }) { 
 
     const Container = styled(SafeAreaView)`
       flex: 1;

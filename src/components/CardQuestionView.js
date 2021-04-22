@@ -29,7 +29,6 @@ const CardHeaderText = styled.Text`
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    max-width: ${Dimensions.get('window').width};
     color: ${colors.text_bold_agro};
 `
 const CardHeaderIcon = styled(RectButton)`

@@ -6,20 +6,23 @@ import { questions } from "../../services/data.json"
 
 import Background from '../../components/Background';
 import CardQuestionView from '../../components/CardQuestionView';
+import { useUser } from '../../context';
+import api from '../../services/api';
 
 export default function AnsweringQuestions() {
+  const { User } = useUser();
   const [answeredQuestions,setAnsweredQuestions] = useState([])
 
   const { navigate, goBack } = useNavigation()
 
+  async function getData() {
+    const { data } = await api.get(`questions?user=${User.id}&isAnswered=true`)
+    console.log(data)
+    setAnsweredQuestions(data)
+  }
+
   useEffect(() => {
-
-    const filtered = questions.filter((item) => 
-      item.isAnswered === true
-    )
-
-    setAnsweredQuestions(filtered)
-
+    getData()
   },[])
 
   return (
