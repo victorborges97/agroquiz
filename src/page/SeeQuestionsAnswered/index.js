@@ -17,7 +17,7 @@ export default function SeeQuestionsAnswered(props) {
   }
 
   return (
-    <Background>
+    <Background stack>
     
       <View style={styles.containerHeader}>
         <Text style={styles.textHeader}>{ props.data ? props.data.title : InitialTitulo }</Text>
@@ -27,7 +27,12 @@ export default function SeeQuestionsAnswered(props) {
 
 
       <View style={styles.btn}>
-        <Button title="goBack" onPress={togglePage} />
+        <Button 
+          title="goBack"
+          onPress={togglePage}
+          height="24px"
+          themeCancel
+        />
       </View>
 
     </Background>

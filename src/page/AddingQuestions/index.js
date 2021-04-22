@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Button from "../../components/Button"
 import Background from '../../components/Background';
 
-export default function AddingQuestions() {
+export default function AddingQuestions(props) {
 
   const { navigate, goBack } = useNavigation()
 
@@ -19,7 +19,6 @@ export default function AddingQuestions() {
       <View style={styles.container}>
         <Text style={styles.text}>AgroQuiz</Text>
         <Text style={styles.text}>AddingQuestions</Text>
-
 
         <View style={styles.btn}>
           <Button title="goBack" onPress={togglePage} />

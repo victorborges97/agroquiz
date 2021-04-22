@@ -1,34 +1,70 @@
-import React from 'react';
-import { useNavigation } from "@react-navigation/core"
+import React, { useState, useEffect } from 'react';
+import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
-import { Container, ButtonNext } from './styled';
+import { Container } from './styled';
+import { questions } from "../../services/data.json";
 
-import Button from "../../components/Button"
 import Background from '../../components/Background';
 import CardQuestion from '../../components/CardQuestion';
 
-const data = { title: "Perguntas para Turma de Algoritimos", questions: [0,1,2,3,4,5], isAnswered: false }
 
 export default function HomePage() {
 
-  const { navigate } = useNavigation()
+  const [questionsUnanswered, setQuestionsUnanswered ] = useState([])
 
-  const togglePage = () => {
-    navigate("Pagina2")
+  const { navigate, goBack } = useNavigation()
+
+  useEffect(() => {
+
+    const filtered = questions.filter((item) => 
+      item.isAnswered === false
+    )
+
+    setQuestionsUnanswered(filtered)
+
+  },[])
+
+  const handleButtonCancel = (item) => {
+    alert(`Cancel, ${item.questions.length}`)
+  }
+
+  const handleButtonNext = (item) => {
+  }
+
+  const handleEdit = (item) => {
+    navigate("EditingQuestion", { item: item })
   }
 
   return (
     <Background>
       <Container>
 
-        <CardQuestion 
-          question={data} 
-          iconHeader  
-        /> 
-
-        <ButtonNext>
-          <Button title="next" onPress={togglePage} />
-        </ButtonNext>
+        <FlatList 
+          data={questionsUnanswered}
+          renderItem={({item}) => (
+            <CardQuestion 
+              question={item} 
+              iconHeader
+              fontText="11px"
+              onPressClear={() => 
+                handleButtonCancel(item)
+              }
+              onPressTrue={() => 
+                handleButtonNext(item)
+              }
+              onPressEdit={() =>
+                handleEdit(item)
+              }
+            /> 
+          )}
+          keyExtractor={item => item.title}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 17,
+            paddingTop: 20,
+          }}
+        />
       </Container>
     </Background>
   );

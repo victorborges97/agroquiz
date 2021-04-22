@@ -1,35 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+import { StyleSheet, FlatList, View, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
 
-import { StyleSheet, Text, View } from 'react-native';
+import { questions } from "../../services/data.json"
 
-import Button from "../../components/Button"
 import Background from '../../components/Background';
+import CardQuestionView from '../../components/CardQuestionView';
 
 export default function AnsweringQuestions() {
+  const [answeredQuestions,setAnsweredQuestions] = useState([])
 
   const { navigate, goBack } = useNavigation()
 
-  const togglePage = () => {
-    goBack()
-  }
+  useEffect(() => {
+
+    const filtered = questions.filter((item) => 
+      item.isAnswered === true
+    )
+
+    setAnsweredQuestions(filtered)
+
+  },[])
 
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.text}>AgroQuiz</Text>
-        <Text style={styles.text}>AnsweringQuestions</Text>
-
-
-        <View style={styles.btn}>
-          <Button title="goBack" onPress={togglePage} />
-          <Button 
-            title="Visualizar Questionario" 
-            onPress={() => 
-              navigate("VisualizarQuestionario")
-            } 
-          />
-        </View>
+        <FlatList 
+          data={answeredQuestions}
+          renderItem={({item}) => (
+            <CardQuestionView 
+              question={item} 
+              
+              fontText="11px"
+              onPressClear={() => 
+                alert("Excluido")
+              }
+              onPressTrue={() => 
+                navigate("SeeQuestionsAnswered", { item: item })
+              }
+            /> 
+          )}
+          keyExtractor={item => item.title}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 17,
+            paddingTop: 20,
+          }}
+        />
       </View>
     </Background>
   );

@@ -29,7 +29,7 @@ const CardHeaderText = styled.Text`
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    max-width: ${Dimensions.get('window').width * 0.7};
+    max-width: ${Dimensions.get('window').width};
     color: ${colors.text_bold_agro};
 `
 const CardHeaderIcon = styled(RectButton)`
@@ -68,7 +68,7 @@ const CardFooterButtons = styled.View`
     flex-direction: row;
 `
 
-export default function CardQuestion({ 
+export default function CardQuestionView({ 
     question,
     onPressClear,
     onPressTrue,
@@ -112,7 +112,7 @@ export default function CardQuestion({
                     themeCancel
                 />
                 <Button 
-                    title="RESPONDER"
+                    title="VER RESPOSTAS"
                     onPress={onPressTrue}
                     height="24px"
                     fontText={fontText}

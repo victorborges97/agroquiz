@@ -5,10 +5,18 @@ import colors from "../styles/colors"
 import fonts from '../styles/fonts';
 import styled from 'styled-components';
 
-export default function Button({ title, height, marginRight, marginLeft, ...rest }) {
+export default function Button({ 
+  title,
+  height,
+  marginRight,
+  marginLeft,
+  fontText,
+  themeCancel,
+  ...rest
+}) {
 
   const ContainerButton = styled(RectButton)`
-    background-color: ${colors.bg_button_send};
+    background-color: ${themeCancel ? colors.bg_button_trash : colors.bg_button_send};
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -18,8 +26,8 @@ export default function Button({ title, height, marginRight, marginLeft, ...rest
   `
 
   const TextButton = styled.Text`
-    color: ${colors.text_send};
-    font-size: 16px;
+    color: ${themeCancel ? colors.text_trash : colors.text_send};
+    font-size: ${fontText ? fontText : "12px"};
     padding: 8px 16px;
   `
 
