@@ -14,27 +14,24 @@ const Card = styled.View`
     margin-top: 15px;
     border-radius: 10px;
 `
-const CardHeader = styled.TouchableOpacity`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+const CardHeader = styled.View`
+    justify-content: center;
     padding: 10px;
 
     padding-left: 23px;
     padding-right: 23px;
 `
-const CardHeaderText = styled.Text`
+const CardHeaderText = styled.TextInput`
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    max-width: ${Dimensions.get('window').width * 0.7}px;
     color: ${colors.text_bold_agro};
 `
 
 const CardLine = styled.View`
     border-bottom-color: ${colors.color_line};
-    border-bottom-width: 1px;
+    border-bottom-width: 0.5px;
     margin-left: 9px;
     margin-right: 9px;
 
@@ -75,8 +72,7 @@ export default function SeeQuestion({
     question,
     onPressClear,
     onPressSwitch,
-    onPressEdit,
-    fontText,
+    OnChange,
 }) { 
     const [isEnabled, setIsEnabled] = useState(question.isRequired);
     const toggleSwitch = () => {
@@ -86,11 +82,13 @@ export default function SeeQuestion({
     return(
       <Card>
 
-        <CardHeader onPress={onPressEdit} >
+        <CardHeader>
         
-            <CardHeaderText>
-                { question.question }
-            </CardHeaderText>
+            <CardHeaderText
+                placeholder="Escreva sua pergunta aqui ..."
+                value={question ? question.question : ""}
+                onChangeText={OnChange}
+            />
 
         </CardHeader>
 

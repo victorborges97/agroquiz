@@ -91,7 +91,6 @@ export default function EditingQuestion({ route }) {
   }
 
   return (
-    <Background stack >
       <Container>
 
         <Modal
@@ -158,6 +157,5 @@ export default function EditingQuestion({ route }) {
         </ButtonGoBack>
         
       </Container>
-    </Background>
   );
 }

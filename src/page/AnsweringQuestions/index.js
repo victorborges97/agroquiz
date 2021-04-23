@@ -1,10 +1,9 @@
 import React, { useState, useEffect }  from 'react';
-import { StyleSheet, FlatList, View, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
 
-import { questions } from "../../services/data.json"
+import { Container } from "./styled"
 
-import Background from '../../components/Background';
 import CardQuestionView from '../../components/CardQuestionView';
 import { useUser } from '../../context';
 import api from '../../services/api';
@@ -26,8 +25,7 @@ export default function AnsweringQuestions() {
   },[])
 
   return (
-    <Background>
-      <View style={styles.container}>
+      <Container>
         <FlatList 
           data={answeredQuestions}
           renderItem={({item}) => (
@@ -50,23 +48,6 @@ export default function AnsweringQuestions() {
             paddingTop: 20,
           }}
         />
-      </View>
-    </Background>
+      </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 25,
-  },
-  btn: {
-    marginTop: 20,
-    width: "100%",
-    paddingHorizontal: 50,
-  },
-});

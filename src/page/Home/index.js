@@ -34,6 +34,7 @@ export default function HomePage() {
   },[])
 
   const refreshingControl = () => {
+    setRefresh(oldRefres => !oldRefres)
     getData()
     setRefresh(oldRefres => !oldRefres)
   }
@@ -50,7 +51,6 @@ export default function HomePage() {
   }
 
   return (
-    <Background>
       <Container>
 
       {
@@ -93,6 +93,5 @@ export default function HomePage() {
             )
       }
       </Container>
-    </Background>
   );
 }

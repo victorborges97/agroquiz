@@ -1,52 +1,86 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from "@react-navigation/core"
+import { useUser } from '../../context';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { 
+  Container,
+} from './styled';
 
-import Button from "../../components/Button"
-import Background from '../../components/Background';
+import api from '../../services/api';
 
-export default function AddingQuestions(props) {
+import FormkArray from '../../components/FormkArray';
+
+export default function AddingQuestions() {
+  const { User } = useUser();
+  const [totalQuestionApi, setTotalQuestionApi] = useState(0)
 
   const { navigate, goBack } = useNavigation()
 
-  const togglePage = () => {
-    goBack()
+  const INITIAL_QUESTION =  { 
+    "id": ``,
+    "question": "",
+    "answer": "",
+    "data_register": new Date(),
+    "isRequired": false,
+    "localization": {
+        "lat": "",
+        "log": ""
+    }
   }
 
-  // const handlePost = () => {
-  //   const res = await apiaxios.post("users/auth", {
-  //     usuario: usuario,
-  //     password: password,
-  //   });
-  // }
+  const INITIAL_INFO = {
+    "id": totalQuestionApi+1,
+    "title": "", 
+    "user": User.id,
+    "data_register": new Date(), 
+    "questions": []
+  }
+
+  async function getTotalData() {
+    try {
+      const { data } = await api.get(`questions`)
+      setTotalQuestionApi(data.length);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getTotalData()
+  },[])
+
+  
 
   return (
-    <Background>
-      <View style={styles.container}>
-        <Text style={styles.text}>AgroQuiz</Text>
-        <Text style={styles.text}>AddingQuestions</Text>
 
-        <View style={styles.btn}>
-          <Button title="goBack" onPress={togglePage} />
-        </View>
-      </View>
-    </Background>
+      <Container>
+        
+        <FormkArray
+          totalQuestionApi={totalQuestionApi}
+        />
+        
+      </Container>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 25,
-  },
-  btn: {
-    marginTop: 20,
-    width: "100%",
-    paddingHorizontal: 50,
-  },
-});
+
+
+//AddingQuestions
+
+/**
+ * {
+            loading ? 
+              <Text>Adicione suas perguntas...</Text>
+            :
+            questions.map((item, index) => (
+              <SeeQuestion
+                key={index}
+                question={item}
+                onPressSwitch={(resp) => { toggleQuestions(index, resp, "isRequired") }}
+                onPressClear={() => { removeQuestion(index) }}
+                OnChange={(text) => { toggleQuestions(index, text, "question") }}
+              />
+            ))
+          }
+ */
