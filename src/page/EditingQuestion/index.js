@@ -192,12 +192,13 @@ export default function EditingQuestion({ route }) {
             onPress={backPage}
             height="34px"
             themeCancel
+            bold
           />
           <Button 
-            title="Salvar"
+            title="SALVAR"
             onPress={connectApiAndBackPage}
             height="34px"
-            
+            bold
           />
         </ButtonGoBack>
         

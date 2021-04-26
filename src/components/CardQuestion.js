@@ -111,12 +111,14 @@ export default function CardQuestion({
                     marginRight="10px"
                     fontText={fontText}
                     themeCancel
+                    bold
                 />
                 <Button 
                     title="RESPONDER"
                     onPress={onPressTrue}
                     height="24px"
                     fontText={fontText}
+                    bold
                 />
             </CardFooterButtons>
         </CardFooter>

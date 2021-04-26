@@ -12,6 +12,7 @@ export default function Button({
   marginLeft,
   fontText,
   themeCancel,
+  bold,
   ...rest
 }) {
 
@@ -29,6 +30,7 @@ export default function Button({
     color: ${themeCancel ? colors.text_trash : colors.text_send};
     font-size: ${fontText ? fontText : "12px"};
     padding: 8px 16px;
+    font-weight: ${bold ? "bold" : "400"};
   `
 
   return (

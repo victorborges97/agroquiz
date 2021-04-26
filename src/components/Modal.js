@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Switch } from 'react-native';
 
 import styled from 'styled-components/native';
 import colors from '../styles/colors';
@@ -45,27 +44,13 @@ const InputTituloTextInput = styled.TextInput`
 `;
 
 const CardLine = styled.View`
-    border-bottom-color: ${colors.color_line};
+    border-bottom-color: ${colors.color_line2};
     border-bottom-width: 1px;
 `
-const CardFooter = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-`   
-const CardFooterSwitch = styled.View`
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-`
-const CardFooterText = styled.Text`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: ${colors.text_regular};
-`
+ 
 const CardFooterButtons = styled.View`
     flex-direction: row;
+    justify-content: space-evenly;
 `
 
 export default function ModalEditing({
@@ -74,6 +59,7 @@ export default function ModalEditing({
   idx,
   onPressClear,
   onPressTrue,
+  nameButton
 }) {
 
     let INITIAL_ITEM = {
@@ -89,6 +75,7 @@ export default function ModalEditing({
 
     const [Question, setQuestion] = useState(question ? question : INITIAL_ITEM);
 
+    let type = question ? "EXISTING" : "NEW"
     const handleAdd = () => {
         let item = {
             ...Question,
@@ -96,7 +83,6 @@ export default function ModalEditing({
             "localization": Question.localization,
             "question": Question.question,
         }
-        let type = question ? "EXISTING" : "NEW"
         console.log(`INDEX: ${idx}`)
         console.log(`TYPE: ${type}`)
         onPressTrue(item, type, idx);
@@ -120,28 +106,21 @@ export default function ModalEditing({
 
             <CardLine />
 
-            <CardFooter>
-                <CardFooterSwitch>
-                    <CardFooterText>
-                        {" "}
-                    </CardFooterText>
-                </CardFooterSwitch>
-
-                <CardFooterButtons>
-                    <Button 
-                        title="Cancelar"
-                        onPress={onPressClear}
-                        height="24px"
-                        marginRight="10px"
-                        themeCancel
-                    />
-                    <Button 
-                        title="SALVAR"
-                        onPress={handleAdd}
-                        height="24px"
-                    />
-                </CardFooterButtons>
-            </CardFooter>
+            <CardFooterButtons>
+                <Button 
+                    title="Cancelar"
+                    onPress={onPressClear}
+                    height="24px"
+                    themeCancel
+                    bold
+                />
+                <Button 
+                    title={question ? "EDITAR" : "CRIAR"}
+                    onPress={handleAdd}
+                    height="24px"
+                    bold
+                />
+            </CardFooterButtons>
             
         </Container>
     );

@@ -16,6 +16,7 @@ export default {
   text_placeholder: "#828282",
 
   color_line: "#474747",
+  color_line2: "#F2F2F2",
 
   border_input: "#5D4F62",
 
