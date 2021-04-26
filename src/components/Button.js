@@ -15,7 +15,7 @@ export default function Button({
   ...rest
 }) {
 
-  const ContainerButton = styled(RectButton)`
+  const ContainerButton = styled.TouchableOpacity`
     background-color: ${themeCancel ? colors.bg_button_trash : colors.bg_button_send};
     justify-content: center;
     align-items: center;

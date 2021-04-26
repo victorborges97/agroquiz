@@ -21,7 +21,7 @@ const CardHeader = styled.View`
     padding-left: 23px;
     padding-right: 23px;
 `
-const CardHeaderText = styled.TextInput`
+const CardHeaderText = styled.Text`
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -48,18 +48,6 @@ const CardFooter = styled.View`
     padding-left: 23px;
     padding-right: 23px;
 `
-const CardFooterSwitch = styled.View`
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-`
-const CardFooterText = styled.Text`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: ${colors.text_regular};
-`
 const CardFooterIcon = styled(RectButton)`
     margin-left: 5px;
     justify-content: center;
@@ -71,24 +59,18 @@ const CardFooterIcon = styled(RectButton)`
 export default function SeeQuestion({ 
     question,
     onPressClear,
-    onPressSwitch,
+    onPressEdit,
     OnChange,
 }) { 
-    const [isEnabled, setIsEnabled] = useState(question.isRequired);
-    const toggleSwitch = () => {
-        setIsEnabled(previousState => !previousState);
-        onPressSwitch(!isEnabled);
-    }
+
     return(
       <Card>
 
         <CardHeader>
         
-            <CardHeaderText
-                placeholder="Escreva sua pergunta aqui ..."
-                value={question ? question.question : ""}
-                onChangeText={OnChange}
-            />
+            <CardHeaderText>
+                {question ? question.question : ""}
+            </CardHeaderText>
 
         </CardHeader>
 
@@ -96,18 +78,9 @@ export default function SeeQuestion({
         
         <CardFooter>
 
-            <CardFooterSwitch>
-                <Switch
-                    trackColor={{ false: colors.bg_switch, true: colors.bg_switch }}
-                    thumbColor={isEnabled ? colors.bg_switch_true : colors.bg_switch_false}
-                    ios_backgroundColor={colors.bg_switch}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
-                />
-                <CardFooterText>
-                    Obrigatória
-                </CardFooterText>
-            </CardFooterSwitch>
+            <CardFooterIcon onPress={onPressEdit}>
+                <Feather name="edit" size={20} color={colors.text_regular} />
+            </CardFooterIcon>
 
             <CardFooterIcon onPress={onPressClear}>
                 <Feather name="trash-2" size={20} color={colors.text_regular} />

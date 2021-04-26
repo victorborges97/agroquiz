@@ -48,10 +48,25 @@ export default function EditingQuestion({ route }) {
   const { navigate, goBack } = useNavigation()
   const { item } = route.params;
 
-  const togglePage = () => {
+  const connectApiAndBackPage = async() => {
+    const { data } = await api.put(`questions/${item}`, {
+        ...info,
+        "questions": questions
+      })
+
+    if(data) {
+      setInfo([])
+      setQuestions([])
+      goBack();
+    } else {
+      alert("Aconteceu algum error ao enviar!")
+    }
+  }
+
+  const backPage = () => {
     setInfo([])
     setQuestions([])
-    goBack()
+    goBack();
   }
 
   async function getData() {
@@ -73,14 +88,35 @@ export default function EditingQuestion({ route }) {
     getData()
   },[])
 
-  const toggleQuestions = (idx, value, name) => {
-    const newQuestion = questions;
+  const saveQuestion = (newItem, type, index) => {
+    switch (type) {
+      case "NEW":
+        if(newItem){
+          let dataNew = questions;
+          dataNew.push(newItem);
+          setQuestions(dataNew);
+        }
 
-    newQuestion[idx][name] = value;
+        break;
+      case "EXISTING":
+        if(index !== null){
+          const oldQuestion = questions;
+          oldQuestion[index] = newItem;
+          setQuestions(oldQuestion);
+        }
 
-    setQuestions(newQuestion)
+        break;
+      default:
+        break;
+    }
+    setModalAlertaVisible(false);
+    setRefresh(oldRefres => !oldRefres)
   }
-
+  
+  const addNewQuestion = () => {
+    setSelectQuestion(false)
+    setModalAlertaVisible(true)
+  } 
   const removeQuestion = (idx) => {
     const newQuestion = questions;
 
@@ -88,6 +124,11 @@ export default function EditingQuestion({ route }) {
 
     setQuestions(newQuestion)
     setRefresh(oldRefres => !oldRefres)
+  }
+  const openQuestion = (question, index) => {
+    setSelectQuestionIdx(index)
+    setSelectQuestion(question)
+    setModalAlertaVisible(true)
   }
 
   return (
@@ -100,8 +141,11 @@ export default function EditingQuestion({ route }) {
           onBackdropPress={() => setModalAlertaVisible(false)}
         >
           <ModalEditing 
+            id={questions.length + 1}
             onPressClear={() => setModalAlertaVisible(false)}
-            onPressTrue={() => {}}
+            onPressTrue={(item, type, index) => { saveQuestion(item, type, index) }}
+            question={selectQuestion}
+            idx={selectQuestionIdx}
           />
         </Modal>
 
@@ -109,12 +153,18 @@ export default function EditingQuestion({ route }) {
           <InputTituloText>Título</InputTituloText>
           <InputTituloTextInput
             value={info ? info.title : ""}
+            onChangeText={text => {
+              setInfo({
+                ...info,
+                "title": text
+              })
+            }}
           />
         </InputTitulo>
 
         <CardLine>
           <ButtonAdd >
-            <RectButton onPress={() => { alert("Add") }}>
+            <RectButton onPress={addNewQuestion}>
               <Feather name="plus" size={18} color={colors.color_line} />
             </RectButton>
           </ButtonAdd>
@@ -125,34 +175,29 @@ export default function EditingQuestion({ route }) {
             loading ? 
             <ActivityIndicator style={{ height: "90%" }} color={colors.bg_botton_bar} size="large" />
             :
-            (
-
-              <FlatList
-                style={{ width: "100%" }}
-                data={questions}
-                renderItem={({ item, index }) => (
-                  <SeeQuestion
-                    key={index}
-                    question={item}
-                    onPressSwitch={(resp) => { toggleQuestions(index, resp, "isRequired") }}
-                    onPressClear={() => { removeQuestion(index) }}
-                    onPressEdit={() => { setSelectQuestion(item); setModalAlertaVisible(true) }}
-                  />
-                )}
-                extraData={refresh}
-                keyExtractor={item => item.question || item.id}
-                showsVerticalScrollIndicator={false}
+            questions && questions.map((item, index) => (
+              <SeeQuestion
+                key={index}
+                question={item}
+                onPressClear={() => { removeQuestion(index) }}
+                onPressEdit={() => { openQuestion(item, index) }}
               />
-            )
+            ))
           }
         </CardList>
 
         <ButtonGoBack>
           <Button 
             title="Voltar"
-            onPress={togglePage}
+            onPress={backPage}
             height="34px"
             themeCancel
+          />
+          <Button 
+            title="Salvar"
+            onPress={connectApiAndBackPage}
+            height="34px"
+            
           />
         </ButtonGoBack>
         

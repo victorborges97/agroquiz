@@ -7,6 +7,7 @@ export const Container = styled(SafeAreaView)`
   flex: 1;
   align-items: center;
   padding: 17px;
+  background: ${colors.background};
 `;
 
 export const InputTitulo = styled.View`
@@ -43,15 +44,15 @@ export const InputTituloTextInput = styled.TextInput`
 
 export const ButtonGoBack = styled.View`
     margin-top: 20px;
-    margin-bottom: 10px;
-    width: 100%;
-    padding-left: 100px;
-    padding-right: 100px;
+    margin-bottom: 20px;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-evenly;
 `;
 
-export const CardList = styled.View`
+export const CardList = styled.ScrollView`
   width: 100%;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export const CardLine = styled.View`

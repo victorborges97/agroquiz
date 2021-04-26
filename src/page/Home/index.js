@@ -23,12 +23,11 @@ export default function HomePage() {
 
   async function getData() {
     const { data } = await api.get(`questions?user=${User.id}&isAnswered=false`)
-    console.log(data)
+
     setQuestionsUnanswered(data)
   }
 
   useEffect(() => {
-    console.log(User.id)
     getData()
     setLoading(false)
   },[])
@@ -39,11 +38,18 @@ export default function HomePage() {
     setRefresh(oldRefres => !oldRefres)
   }
 
-  const handleButtonCancel = (item) => {
-    alert(`Cancel, ${item.questions.length}`)
+  const handleButtonExcluir = async (id) => {
+    const { data } = await api.delete(`questions/${id}`)
+    if(data) {
+      alert("Excluido com sucesso!")
+      refreshingControl()
+    } else {
+      alert("Algo deu errado!")
+    }
   }
 
   const handleButtonNext = (item) => {
+    alert("Responder")
   }
 
   const handleEdit = (item) => {
@@ -69,7 +75,7 @@ export default function HomePage() {
                     iconHeader
                     fontText="11px"
                     onPressClear={() => 
-                      handleButtonCancel(item)
+                      handleButtonExcluir(item.id)
                     }
                     onPressTrue={() => 
                       handleButtonNext(item)

@@ -69,17 +69,37 @@ const CardFooterButtons = styled.View`
 `
 
 export default function ModalEditing({
+    id,
   question,
-  onPressSwitch,
+  idx,
   onPressClear,
   onPressTrue,
 }) {
 
-    const [isEnabled, setIsEnabled] = useState(question ? question.isRequired : false);
+    let INITIAL_ITEM = {
+        "id": id,
+        "answer": "",
+        "data_register": new Date(),
+        "localization": {
+            "lat": "",
+            "log": "",
+        },
+        "question": "",
+    }
 
-    const toggleSwitch = () => {
-        setIsEnabled(previousState => !previousState);
-        onPressSwitch(!isEnabled);
+    const [Question, setQuestion] = useState(question ? question : INITIAL_ITEM);
+
+    const handleAdd = () => {
+        let item = {
+            ...Question,
+            "data_register": new Date(),
+            "localization": Question.localization,
+            "question": Question.question,
+        }
+        let type = question ? "EXISTING" : "NEW"
+        console.log(`INDEX: ${idx}`)
+        console.log(`TYPE: ${type}`)
+        onPressTrue(item, type, idx);
     }
 
     return (
@@ -88,7 +108,13 @@ export default function ModalEditing({
             <InputTitulo>
                 <InputTituloText>TÍTULO DA PERGUNTA</InputTituloText>
                 <InputTituloTextInput
-                    value={question ? question.question : ""}
+                    value={Question.question}
+                    onChangeText={(text) => {
+                        setQuestion({
+                            ...Question,
+                            question: text
+                        })
+                    }}
                 />
             </InputTitulo>
 
@@ -96,15 +122,8 @@ export default function ModalEditing({
 
             <CardFooter>
                 <CardFooterSwitch>
-                    <Switch
-                        trackColor={{ false: colors.bg_switch, true: colors.bg_switch }}
-                        thumbColor={isEnabled ? colors.bg_switch_true : colors.bg_switch_false}
-                        ios_backgroundColor={colors.bg_switch}
-                        onValueChange={toggleSwitch}
-                        value={isEnabled}
-                    />
                     <CardFooterText>
-                        Obrigatória
+                        {" "}
                     </CardFooterText>
                 </CardFooterSwitch>
 
@@ -118,7 +137,7 @@ export default function ModalEditing({
                     />
                     <Button 
                         title="SALVAR"
-                        onPress={ onPressTrue }
+                        onPress={handleAdd}
                         height="24px"
                     />
                 </CardFooterButtons>
