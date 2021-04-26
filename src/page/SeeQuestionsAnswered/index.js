@@ -1,59 +1,125 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
+import { useUser } from '../../context';
 
-import Button from "../../components/Button"
-import Background from "../../components/Background"
+import api from '../../services/api';
 import colors from '../../styles/colors';
+import Button from "../../components/Button"
 
-export default function SeeQuestionsAnswered(props) {
+import { 
+  Container,
+  ContainerHeader,
+  TextHeader,
+  SubHeader,
+  ContainerQuestion,
+  CardQuestion,
+  Question,
+  Answer,
+  ButtonGoBack,
+ } from './styled';
 
+export default function SeeQuestionsAnswered({ route }) {
+
+  const { User } = useUser();
+  const [seeQuestions,setSeeQuestions] = useState([])
+  const [refreshing, setRefreshing] = useState(false);
+  const [refresh, setRefresh] = useState(false)
   const { navigate, goBack } = useNavigation()
 
+  const { item } = route.params;
+
   const InitialTitulo = "Título do questionario montado"
+
+  async function getData() {
+    const { data } = await api.get(`questions?user=${User.id}&id=${item.id}`)
+    setSeeQuestions(data)
+    console.log(data)
+  }
+
+  const refreshingControl = () => {
+    setRefresh(oldRefres => !oldRefres)
+    getData()
+    setRefresh(oldRefres => !oldRefres)
+  }
+
+  useEffect(() => {
+    getData()
+  },[])
 
   const togglePage = () => {
     goBack()
   }
 
   return (
-    <Background stack>
+    <Container>
     
-      <View style={styles.containerHeader}>
-        <Text style={styles.textHeader}>{ props.data ? props.data.title : InitialTitulo }</Text>
-      </View>
+      <ContainerHeader>
+        <TextHeader>{ item ? item.title : InitialTitulo }</TextHeader>
+      </ContainerHeader>
       
-      <Text style={styles.text}>SeeQuestionsAnswered</Text>
 
 
-      <View style={styles.btn}>
+      
+      
+      <ContainerQuestion>
+        
+        <SubHeader>1 de X</SubHeader>
+        
+        <CardQuestion>
+          <Question>
+          Pergunta ......
+          </Question>
+          
+          <Answer 
+          
+          />
+        </CardQuestion>
+
         <Button 
-          title="goBack"
+          title="Proxima"
           onPress={togglePage}
-          height="24px"
+          height="34px"
           themeCancel
+          bold
         />
-      </View>
 
-    </Background>
+      </ContainerQuestion>
+
+
+
+
+      <ButtonGoBack>
+        {
+          false && (
+            <Button 
+              title="Voltar"
+              onPress={togglePage}
+              height="34px"
+              themeCancel
+              bold
+            />
+          )
+        }
+        {
+          false ? (
+            <Button
+              title="SALVAR"
+              onPress={() => {}}
+              height="34px"
+              bold
+            />
+          ) : null
+        }
+      </ButtonGoBack>
+      
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  containerHeader: {
-    width: "100%",
-    // backgroundColor: "#dbdbdb",
-    alignItems: "center",
-    paddingTop: 40,
-    paddingBottom: 10,
-  },
   textHeader: {
-    width: "60%",
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: 'bold',
-    lineHeight: 23,
-    color: colors.text_bold_agro,
+    
   },
   text: {
     fontSize: 20,

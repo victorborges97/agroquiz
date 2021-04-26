@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
 
 import { Container } from "./styled"
@@ -11,13 +11,19 @@ import api from '../../services/api';
 export default function AnsweringQuestions() {
   const { User } = useUser();
   const [answeredQuestions,setAnsweredQuestions] = useState([])
-
+  const [refreshing, setRefreshing] = useState(false);
+  const [refresh, setRefresh] = useState(false)
   const { navigate, goBack } = useNavigation()
 
   async function getData() {
     const { data } = await api.get(`questions?user=${User.id}&isAnswered=true`)
-    console.log(data)
     setAnsweredQuestions(data)
+  }
+
+  const refreshingControl = () => {
+    setRefresh(oldRefres => !oldRefres)
+    getData()
+    setRefresh(oldRefres => !oldRefres)
   }
 
   useEffect(() => {
@@ -42,11 +48,14 @@ export default function AnsweringQuestions() {
             /> 
           )}
           keyExtractor={item => item.title}
+          extraData={refresh}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
-            paddingHorizontal: 17,
             paddingTop: 20,
           }}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={refreshingControl} />
+          }
         />
       </Container>
   );

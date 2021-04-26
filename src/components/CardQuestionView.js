@@ -109,12 +109,14 @@ export default function CardQuestionView({
                     marginRight="10px"
                     fontText={fontText}
                     themeCancel
+                    bold
                 />
                 <Button 
                     title="VER RESPOSTAS"
                     onPress={onPressTrue}
                     height="24px"
                     fontText={fontText}
+                    bold
                 />
             </CardFooterButtons>
         </CardFooter>
