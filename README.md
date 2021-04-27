@@ -18,16 +18,20 @@
 
 ## 🚀 Para usar basta somente roda os seguintes comando a baixo.
 
-* Primeiro instalar as dependencias: <br/>
+* 1º - Clonar o repositório: <br/>
+  `$ git clone https://github.com/victorborges97/agroquiz`
+
+* 2º - Já na pasta do projeto, instalar as dependencias: <br/>
   `$ yarn` or `$ npm install`
-- Logo após, instalar essas duas bibliotecas. <br/>
+  
+  Logo após, instalar essas duas bibliotecas. <br/>
   `$ yarn global add expo-cli` or `$ npm install -g expo-cli` <br/>
   `$ yarn global add json-server` or `$ npm install -g json-server` 
 
-* Segundo Rodar o server-json (Servidor fake para apresentação do APP):
-- Lembre-se de colocar o seu IP local no lugar do meu a baixo. <br/>
+* 3º - Rodar o json-server (Servidor fake para apresentação do APP):
+  Lembre-se de colocar o seu IP local no lugar do meu a baixo. <br/>
   `$ json-server --watch src/services/data.json --host 21.0.214.178  --port 3333`
 
-* Terceiro Rodar o expo para visualizar o app rodando: <br/>
+* 4º - Rodar o expo para visualizar o app rodando: <br/>
   [`$ expo start`](https://docs.expo.io/versions/latest/workflow/expo-cli/), Experimente.
 
