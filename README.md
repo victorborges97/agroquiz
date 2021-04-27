@@ -8,11 +8,13 @@
   <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
 </p>
 
-O aplicativo permite adicionar itens de tarefas, marcá-los como concluídos e excluir itens concluídos. 
-Os recursos `SQLite` usados ​​incluem a criação e abertura de bancos de dados, criação de tabelas, 
-inserir itens, consultar e exibir resultados, usando instruções preparadas.
+## 👍🏾 Imagens.
 
-![Simulator Example](https://raw.githubusercontent.com/victorborges97/victorborges97.github.io/master/src/assets/projets/APPTODO.png)
+![Simulator Example](https://raw.githubusercontent.com/victorborges97/agroquiz/main/assets/1.png)
+
+![Simulator Example](https://raw.githubusercontent.com/victorborges97/agroquiz/main/assets/2.png)
+
+![Simulator Example](https://raw.githubusercontent.com/victorborges97/agroquiz/main/assets/3.png)
 
 ## 🚀 Para usar basta somente roda os seguintes comando a baixo.
 
