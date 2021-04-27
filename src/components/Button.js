@@ -16,7 +16,13 @@ export default function Button({
   ...rest
 }) {
 
-  const ContainerButton = styled.TouchableOpacity`
+  const ContainerButton = styled.TouchableOpacity.attrs({
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
+  })`
     background-color: ${themeCancel ? colors.bg_button_trash : colors.bg_button_send};
     justify-content: center;
     align-items: center;

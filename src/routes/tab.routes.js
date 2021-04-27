@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 
 import HomePage from "../page/Home/index";
 import AddQuestions from "../page/AddingQuestions";
-import AnsweringQuestions from "../page/AnsweringQuestions";
+import Answered from "../page/Answered";
 import colors from "../styles/colors";
 
 const tabsRoutes = createBottomTabNavigator();
@@ -51,7 +51,7 @@ const AppRoutes = () => (
 
         <tabsRoutes.Screen 
             name="Respondidos"
-            component={AnsweringQuestions}
+            component={Answered}
             options={{
                 title: "",
                 tabBarIcon: ({ focused }) => (

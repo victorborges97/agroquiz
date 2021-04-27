@@ -1,7 +1,9 @@
 import axios from "axios";
+import { IP_PARA_SERVE } from "../../config";
+
 
 const api = axios.create({
-    baseURL: "http://21.0.214.178:3333"
+    baseURL: `http://${IP_PARA_SERVE}:3333`
 });
 
 export default api;

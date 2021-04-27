@@ -7,7 +7,13 @@ import styled from "styled-components";
 import colors from "../styles/colors";
 import Button from "./Button";
 
-const Card = styled.View`
+const Card = styled.View.attrs({
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
+})`
     width: 100%;
     min-height: 96px;
     justify-content: space-evenly;

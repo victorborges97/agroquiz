@@ -14,7 +14,7 @@ export default function Login() {
 
     const { navigate } = useNavigation()
 
-    const makeApiCall = async () => {
+    const handleApi = async () => {
         if(Name !== "" || Name !== null){
             try {   
                 //agrotools
@@ -60,7 +60,7 @@ export default function Login() {
                     <Button
                         title="Entrar"
                         height="48px"
-                        onPress={makeApiCall}
+                        onPress={handleApi}
                     />
                 </ButtonLogin>
             </KeyboardAvoidingView>

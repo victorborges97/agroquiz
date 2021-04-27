@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ActivityIndicator, FlatList, RefreshControl } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation, useFocusEffect } from "@react-navigation/core";
 
 import { Container } from './styled';
 
-import Background from '../../components/Background';
 import CardQuestion from '../../components/CardQuestion';
 import { useUser } from '../../context';
 import colors from '../../styles/colors';
@@ -27,10 +26,16 @@ export default function HomePage() {
     setQuestionsUnanswered(data)
   }
 
-  useEffect(() => {
-    getData()
-    setLoading(false)
-  },[])
+  useFocusEffect(
+    useCallback(() => {
+      let mounted = true
+
+      getData()
+      setLoading(false)
+
+      return () => mounted = false
+    }, [])
+  );
 
   const refreshingControl = () => {
     setRefresh(oldRefres => !oldRefres)
@@ -49,7 +54,7 @@ export default function HomePage() {
   }
 
   const handleButtonNext = (item) => {
-    alert("Responder")
+    navigate("AnsweringQuestions", { item: item })
   }
 
   const handleEdit = (item) => {

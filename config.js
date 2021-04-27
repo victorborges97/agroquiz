@@ -1,0 +1,1 @@
+export const IP_PARA_SERVE = "192.168.0.5"

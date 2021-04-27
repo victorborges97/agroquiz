@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
@@ -19,20 +19,8 @@ import { Container,
 import api from '../../services/api';
 
 import Button from "../../components/Button"
-import Background from '../../components/Background';
 import SeeQuestion from '../../components/SeeQuestion';
 import ModalEditing from '../../components/Modal';
-
-const INITIAL_QUESTION =  { 
-  "question": "",
-  "answer": "",
-  "data_register": "",
-  "isRequired": false,
-  "localization": {
-      "lat": "",
-      "log": ""
-  }
-}
 
 export default function EditingQuestion({ route }) {
 
@@ -48,7 +36,7 @@ export default function EditingQuestion({ route }) {
   const { navigate, goBack } = useNavigation()
   const { item } = route.params;
 
-  const connectApiAndBackPage = async() => {
+  const handleApi = async() => {
     const { data } = await api.put(`questions/${item}`, {
         ...info,
         "questions": questions
@@ -117,6 +105,7 @@ export default function EditingQuestion({ route }) {
     setSelectQuestion(false)
     setModalAlertaVisible(true)
   } 
+
   const removeQuestion = (idx) => {
     const newQuestion = questions;
 
@@ -125,6 +114,7 @@ export default function EditingQuestion({ route }) {
     setQuestions(newQuestion)
     setRefresh(oldRefres => !oldRefres)
   }
+
   const openQuestion = (question, index) => {
     setSelectQuestionIdx(index)
     setSelectQuestion(question)
@@ -196,7 +186,7 @@ export default function EditingQuestion({ route }) {
           />
           <Button 
             title="SALVAR"
-            onPress={connectApiAndBackPage}
+            onPress={handleApi}
             height="34px"
             bold
           />

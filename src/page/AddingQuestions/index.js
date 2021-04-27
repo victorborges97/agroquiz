@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList } from 'react-native';
 import { useNavigation } from "@react-navigation/core"
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
@@ -87,7 +86,7 @@ export default function AddingQuestions() {
       default:
         break;
     }
-    
+    setModalAlertaVisible(false);
     setRefresh(oldRefres => !oldRefres)
   }
   
