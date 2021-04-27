@@ -21,8 +21,8 @@
 * Primeiro instalar as dependencias: <br/>
   `$ yarn` or `$ npm install`
 - Logo após, instalar essas duas bibliotecas. <br/>
-  `$ npm install -g expo-cli` <br/>
-  `$ npm install -g json-server` 
+  `$ yarn global add expo-cli` or `$ npm install -g expo-cli` <br/>
+  `$ yarn global add json-server` or `$ npm install -g json-server` 
 
 * Segundo Rodar o server-json (Servidor fake para apresentação do APP):
 - Lembre-se de colocar o seu IP local no lugar do meu a baixo. <br/>
