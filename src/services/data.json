@@ -11,322 +11,72 @@
   ],
   "questions": [
     {
-      "id": 0,
-      "title": "Perguntas para Turma de Algoritimos e Testendo o tamanho do titulo",
       "user": 2,
-      "data_register": "2021-04-21 00:00:30",
-      "questions": [
-        {
-          "id": 0,
-          "question": "O que é Mágica ?",
-          "answer": "Responder",
-          "data_register": "2021-04-21 00:00:30",
-          "isRequired": true,
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 1,
-          "question": "O que é Agro ?",
-          "answer": "Teste",
-          "data_register": "2021-04-21 00:00:30",
-          "isRequired": true,
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 2,
-          "question": "O que é Native ?",
-          "answer": "Teste",
-          "data_register": "2021-04-21 00:00:30",
-          "isRequired": true,
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 3,
-          "question": "O que é Redux ?",
-          "answer": "Teste",
-          "data_register": "2021-04-21 00:00:30",
-          "isRequired": true,
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 4,
-          "question": "O que é React ?",
-          "answer": "Teste",
-          "data_register": "2021-04-21 00:00:30",
-          "isRequired": true,
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        }
-      ],
-      "isAnswered": true
-    },
-    {
-      "id": 1,
-      "user": 2,
-      "data_register": "2021-04-21 00:00:30",
-      "questions": [
-        {
-          "id": 4,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "O React Native compila seu código para Android e iOS ?",
-          "data_register": "2021-04-26T18:57:22.048Z"
-        },
-        {
-          "id": 2,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "Com React Native, você escreve seu código uma vez e pá: Android e iOS vão funcionar de maneira consistente num passe de mágica!",
-          "data_register": "2021-04-26T18:57:41.433Z"
-        }
-      ],
       "isAnswered": false,
-      "title": "Perguntas sobre React Native"
-    },
-    {
-      "id": 3,
-      "title": "Perguntas para Turma de Algoritimos e Testendo o tamanho do titulo",
-      "user": 1,
-      "data_register": "2021-04-21 00:00:30",
-      "questions": [
-        {
-          "id": 0,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 1,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 2,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 3,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 4,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        }
-      ],
-      "isAnswered": true
-    },
-    {
-      "id": 4,
-      "title": "Perguntas para Turma de Algoritimos 1",
-      "user": 1,
-      "data_register": "2021-04-21 00:00:30",
-      "questions": [
-        {
-          "id": 0,
-          "question": "O que é system ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 1,
-          "question": "O que é um classe de rede ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 2,
-          "question": "O que é um prototipação ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 3,
-          "question": "O que é Android Studio ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        },
-        {
-          "id": 4,
-          "question": "O que é React Native ?",
-          "answer": "",
-          "data_register": "2021-04-21 00:00:30",
-          "localization": {
-            "lat": "",
-            "log": ""
-          }
-        }
-      ],
-      "isAnswered": false
-    },
-    {
-      "user": 2,
-      "data_register": "2021-04-26T18:42:13.704Z",
-      "isAnswered": false,
+      "data_register": "2021-04-27T14:05:12.711Z",
       "questions": [
         {
           "id": 1,
           "answer": "",
           "localization": {
             "lat": "",
-            "log": ""
-          },
-          "question": "Quais são as vantagens do React?",
-          "data_register": "2021-04-26T18:55:06.032Z"
-        },
-        {
-          "id": 2,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "Cite algumas funcionalidades do React?",
-          "data_register": "2021-04-26T18:55:18.665Z"
-        },
-        {
-          "id": 3,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
+            "long": ""
           },
           "question": "O que é React?",
-          "data_register": "2021-04-26T18:55:26.666Z"
-        },
-        {
-          "id": 4,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "Quais as limitações do React?",
-          "data_register": "2021-04-26T18:55:36.765Z"
-        },
-        {
-          "id": 5,
-          "answer": "",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "Qual a diferença entre React e React Native?",
-          "data_register": "2021-04-26T18:55:44.585Z"
-        }
-      ],
-      "id": 15,
-      "title": "Perguntas sobre ReactJS"
-    },
-    {
-      "user": 2,
-      "isAnswered": true,
-      "data_register": "2021-04-27T00:48:11.187Z",
-      "questions": [
-        {
-          "id": 1,
-          "answer": "Pedro Alves Cabral",
-          "localization": {
-            "lat": "",
-            "log": ""
-          },
-          "question": "Quem descobriu o brasil",
-          "data_register": "2021-04-27T00:47:52.948Z"
+          "data_register": "2021-04-27T14:04:34.319Z"
         },
         {
           "id": 2,
-          "answer": "Arthur",
+          "answer": "",
           "localization": {
             "lat": "",
-            "log": ""
+            "long": ""
           },
-          "question": "Quem vai sair do BBB essa semana ?",
-          "data_register": "2021-04-27T00:48:07.997Z"
+          "question": "O que é Redux?",
+          "data_register": "2021-04-27T14:04:50.435Z"
+        },
+        {
+          "id": 3,
+          "answer": "",
+          "localization": {
+            "lat": "",
+            "long": ""
+          },
+          "question": "O que é virtual DOM?",
+          "data_register": "2021-04-27T14:05:10.130Z"
         }
       ],
-      "title": "Testando novamente",
-      "id": 17
+      "title": "Perguntas sobre React",
+      "id": 5
     },
     {
-      "title": "Teste",
+      "title": "Perguntas sobre React 2",
       "questions": [
         {
-          "id": 1,
-          "answer": "Itaperuna",
+          "id": 2,
+          "answer": "É um objeto que contém algumas informações que podem alterar durante um ciclo de vida do componente.",
           "localization": {
-            "lat": -21.193917,
-            "long": -41.9066405
+            "lat": -21.1939167,
+            "long": -41.9066357
           },
-          "question": "Sua cidade ?",
-          "data_register": "2021-04-27T13:45:40.598Z"
+          "question": "O que é state ?",
+          "data_register": "2021-04-27T14:06:28.398Z"
+        },
+        {
+          "id": 2,
+          "answer": "Aumento de performance da aplicação com o uso do virtual DOM.\nJSX torna o código fácil de ler e escrever.\nPode ser renderizado no lado do cliente ou do servidor.",
+          "localization": {
+            "lat": -21.1939167,
+            "long": -41.9066357
+          },
+          "question": "Quais vantagens de usar React?",
+          "data_register": "2021-04-27T14:06:46.844Z"
         }
       ],
       "isAnswered": true,
-      "data_register": "2021-04-27T13:45:46.900Z",
+      "data_register": "2021-04-27T14:06:09.404Z",
       "user": 2,
-      "id": 18
+      "id": 6
     }
   ]
 }

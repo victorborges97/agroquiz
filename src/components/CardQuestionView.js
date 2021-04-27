@@ -25,8 +25,9 @@ const CardHeader = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 23px;
     padding-right: 23px;
 `
@@ -35,6 +36,7 @@ const CardHeaderText = styled.Text`
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
+    width: 90%;
     color: ${colors.text_bold_agro};
 `
 const CardHeaderIcon = styled(RectButton)`
@@ -89,15 +91,6 @@ export default function CardQuestionView({
             <CardHeaderText>
                 { question.title }
             </CardHeaderText>
-
-            {
-                iconHeader &&
-                (
-                    <CardHeaderIcon onPress={onPressEdit}>
-                        <Feather name="edit" size={15} color={colors.text_bold_agro} />
-                    </CardHeaderIcon>
-                )
-            }
 
         </CardHeader>
 

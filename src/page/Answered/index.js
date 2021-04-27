@@ -49,6 +49,9 @@ export default function Answered() {
   return (
       <Container>
         <FlatList 
+          style={{
+            width: "100%",
+          }}
           data={answeredQuestions}
           renderItem={({item}) => (
             <CardQuestionView 
