@@ -16,16 +16,16 @@ inserir itens, consultar e exibir resultados, usando instruções preparadas.
 
 ## 🚀 Para usar basta somente roda os seguintes comando a baixo.
 
-* Primeiro instalar as dependencias: 
-  $ `yarn` or `npm install`
-- Logo após, instalar essas duas bibliotecas.
-  $ `npm install -g expo-cli`
-  $ `npm install -g json-server`
+* Primeiro instalar as dependencias: <br/>
+  `$ yarn` or `$ npm install`
+- Logo após, instalar essas duas bibliotecas. <br/>
+  `$ npm install -g expo-cli` <br/>
+  `$ npm install -g json-server` 
 
 * Segundo Rodar o server-json (Servidor fake para apresentação do APP):
-- Lembre-se de colocar o seu IP local no lugar do meu a baixo.
-  $ `json-server --watch src/services/data.json --host 21.0.214.178  --port 3333`
+- Lembre-se de colocar o seu IP local no lugar do meu a baixo. <br/>
+  `$ json-server --watch src/services/data.json --host 21.0.214.178  --port 3333`
 
-* Terceiro Rodar o expo para visualizar o app rodando:
-  $ [`expo start`](https://docs.expo.io/versions/latest/workflow/expo-cli/), Experimente.
+* Terceiro Rodar o expo para visualizar o app rodando: <br/>
+  [`$ expo start`](https://docs.expo.io/versions/latest/workflow/expo-cli/), Experimente.
 
