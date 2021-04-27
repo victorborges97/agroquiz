@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { useUser } from '../../context';
 
-import logo from "../../assets/icon.png"
+import * as Location from 'expo-location';
+
+import logo from "../../assets/icon.png";
 import api from "../../services/api";
 import Button from '../../components/Button';
 import { Container, TextInputLogin, ImageLogin, ButtonLogin } from './styled';
 
+
 export default function Login() {
-    const { setUser } = useUser();
-    const [Name, setName] = useState("agrotools")
+    const { setUser, setLocation } = useUser();
+    const [Name, setName] = useState("agrotools");
+    const [errorMsg, setErrorMsg] = useState(null);
 
     const { navigate } = useNavigation()
+
+    const _requestLocation = async () => {
+
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+            setErrorMsg('Permission to access location was denied');
+            return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+    }
+
+    useEffect(() => {
+        _requestLocation()
+    },[])
 
     const handleApi = async () => {
         if(Name !== "" || Name !== null){

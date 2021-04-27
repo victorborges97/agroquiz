@@ -1,1 +1,1 @@
-export const IP_PARA_SERVE = "192.168.0.5"
+export const IP_PARA_SERVE = "21.0.214.178"

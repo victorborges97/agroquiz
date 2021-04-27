@@ -20,11 +20,14 @@ import {
 
 export default function AnsweringQuestions({ route }) {
 
-  const { User } = useUser();
+  const { User, Location } = useUser();
   const [seeQuestions,setSeeQuestions] = useState({})
   const [Questions,setQuestions] = useState(null)
   const [numberIdx, setNumberIdx] = useState(0);
   const { navigate, goBack } = useNavigation()
+
+  const { coords } = Location;
+  const location = Location ? { "lat": coords.latitude, "long": coords.longitude } : { "lat": "", "long": "" }
 
   const { item } = route.params;
 
@@ -47,6 +50,7 @@ export default function AnsweringQuestions({ route }) {
   const handleApi = async () => {
 
     try {
+
       let dataNew = seeQuestions;
       dataNew.questions = Questions;
       dataNew.isAnswered = true;
@@ -66,7 +70,8 @@ export default function AnsweringQuestions({ route }) {
 
   const handleInputQuestion = (text, idx) => {
     const oldQuestion = Questions;
-    oldQuestion[numberIdx].answer = text
+    oldQuestion[numberIdx].answer = text;
+    oldQuestion[numberIdx].localization = location;
     
     setQuestions([...oldQuestion])
   }

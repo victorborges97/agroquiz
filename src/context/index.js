@@ -6,13 +6,15 @@ const UserContext = createContext();
 
 export default function UserProvider({ children }) {
     const [User, setUser] = useState([]);
+    const [Location, setLocation] = useState(null);
 
     return (
         <UserContext.Provider
         value={{
             User,
             setUser, 
-            
+            Location,
+            setLocation
         }}
         >
         {children}
@@ -24,6 +26,6 @@ export function useUser() {
   const context = useContext(UserContext);
   if (!context)
     throw new Error("useUser must be used within a Context.Provider");
-  const { User, setUser, } = context;
-  return { User, setUser, };
+  const { User, setUser, Location, setLocation } = context;
+  return { User, setUser, Location, setLocation };
 }

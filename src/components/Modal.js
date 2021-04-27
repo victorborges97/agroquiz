@@ -68,7 +68,7 @@ export default function ModalEditing({
         "data_register": new Date(),
         "localization": {
             "lat": "",
-            "log": "",
+            "long": "",
         },
         "question": "",
     }
@@ -83,8 +83,6 @@ export default function ModalEditing({
             "localization": Question.localization,
             "question": Question.question,
         }
-        console.log(`INDEX: ${idx}`)
-        console.log(`TYPE: ${type}`)
         onPressTrue(item, type, idx);
     }
 
